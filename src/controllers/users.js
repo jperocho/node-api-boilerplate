@@ -1,9 +1,9 @@
-const User = require('../models').User
+const User = require('../database/models').User
 const { hash, comparePassword } = require('../services/bcrypt.service')
 const authService = require('../services/auth.service')
 
 module.exports = {
-  create (req, res) {
+  create (req, res, next) {
     let encryptPassword = hash(req.body.password)
 
     if (req.body.password) {
