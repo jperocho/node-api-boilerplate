@@ -4,3 +4,6 @@ yarn-error.log
 debug.log
 .DS_Store
 npm-debug.*
+
+yarn.lock
+package-lock.json
