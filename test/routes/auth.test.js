@@ -11,7 +11,7 @@ describe('Authentication route', () => {
 
   beforeEach(done => {
     Users
-      .destroy({where: {}})
+      .destroy({ where: {} })
       .then(() => Users.create({
         firstName: 'Test',
         lastName: 'Sample',
@@ -20,7 +20,7 @@ describe('Authentication route', () => {
       }))
       .then((req, res) => {
         mockUser = req.dataValues
-        token = authService.issue({id: req.dataValues.id})
+        token = authService.issue({ id: req.dataValues.id })
         done()
       })
   })
@@ -38,11 +38,11 @@ describe('Authentication route', () => {
               email: mockUser.email
             }
           })
-          .then(user => {
-            comparePassword(user.dataValues.password, mockUser.password)
-            expect(mockUser.email).toBe(user.dataValues.email)
-            done(err)
-          })
+            .then(user => {
+              comparePassword(user.dataValues.password, mockUser.password)
+              expect(mockUser.email).toBe(user.dataValues.email)
+              done(err)
+            })
         })
     })
   })

@@ -1,6 +1,4 @@
 const userRoutes = require('./user')
-const todoRoutes = require('./todo')
-const todoItemRoutes = require('./todoitem')
 
 module.exports = (app) => {
   /**
@@ -26,6 +24,4 @@ module.exports = (app) => {
   }))
 
   userRoutes(app)
-  todoRoutes(app)
-  todoItemRoutes(app)
 }

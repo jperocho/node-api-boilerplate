@@ -37,7 +37,7 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: 0
     },
     profilePhotoId: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
       allowNull: true
     },
     isPasswordReset: {
