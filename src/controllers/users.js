@@ -3,8 +3,8 @@ const { hash, comparePassword } = require('../services/bcrypt.service')
 const authService = require('../services/auth.service')
 
 module.exports = {
-  create (req, res, next) {
-    let encryptPassword = hash(req.body.password)
+  create (req, res) {
+    const encryptPassword = hash(req.body.password)
 
     if (req.body.password) {
       return User
@@ -15,16 +15,15 @@ module.exports = {
           password: encryptPassword
         })
         .then(user => {
-          const token = authService.issue({id: user.id})
-
-          res.status(201).json({token, user})
+          const token = authService.issue({ id: user.id })
+          res.status(201).json({ token, user })
         })
         .catch(error => {
           res.status(400).json(error)
         })
     }
 
-    return res.status(400).json({message: 'There\'s something wrong in password.'})
+    return res.status(400).json({ message: 'There\'s something wrong in password.' })
   },
   list (req, res) {
     return User
@@ -91,21 +90,21 @@ module.exports = {
           email: email
         }
       })
-      .then(user => {
-        if (!user) {
-          return res.status(400).json({message: 'Bad Request: User not found'})
-        }
-        if (comparePassword(password, user.password)) {
-          const token = authService.issue({id: user.id})
+        .then(user => {
+          if (!user) {
+            return res.status(400).json({ message: 'Bad Request: User not found' })
+          }
+          if (comparePassword(password, user.password)) {
+            const token = authService.issue({ id: user.id })
 
-          return res.status(200).json({token, user})
-        }
-        return res.status(401).json({message: 'Unauthorized'})
-      })
-      .catch((err) => {
-        console.log(err)
-        return res.status(500).json({message: 'Internal server error'})
-      })
+            return res.status(200).json({ token, user })
+          }
+          return res.status(401).json({ message: 'Unauthorized' })
+        })
+        .catch((err) => {
+          console.log(err)
+          return res.status(500).json({ message: 'Internal server error' })
+        })
     }
   },
   validate (req, res) {

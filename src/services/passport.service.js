@@ -17,8 +17,8 @@ const opts = {
 module.exports = () => {
   const strategy = new JwtStrategy(opts, (jwtPayload, done) => {
     User.findById(jwtPayload.id)
-    .then((user) => done(null, user))
-    .catch((err) => done(err, null))
+      .then((user) => done(null, user))
+      .catch((err) => done(err, null))
   })
 
   passport.use(strategy)
@@ -28,6 +28,6 @@ module.exports = () => {
 
   return {
     initialize: () => passport.initialize(),
-    authenticate: () => passport.authenticate('jwt', {session: false})
+    authenticate: () => passport.authenticate('jwt', { session: false })
   }
 }

@@ -11,7 +11,7 @@ describe('User route', () => {
 
   beforeEach(done => {
     Users
-      .destroy({where: {}})
+      .destroy({ where: {} })
       .then(() => Users.create({
         firstName: 'Noel Alfonso',
         lastName: 'Miranda',
@@ -20,7 +20,7 @@ describe('User route', () => {
       }))
       .then((req, res) => {
         mockUser = req.dataValues
-        token = authService.issue({id: req.dataValues.id})
+        token = authService.issue({ id: req.dataValues.id })
         done()
       })
       .then(() => Users.create({
@@ -83,9 +83,9 @@ describe('User route', () => {
             email: 'aw.wew@email.com',
             password: 'pass'
           })
-        .expect(400).end((err, res) => {
-          done(err)
-        })
+          .expect(400).end((err, res) => {
+            done(err)
+          })
       })
     })
   })
@@ -103,12 +103,12 @@ describe('User route', () => {
           .expect(200)
           .end((err, res) => {
             Users.findOne({
-              where: {id: res.body.id}
+              where: { id: res.body.id }
             })
-            .then(user => {
-              expect(user.firstName).toBe('New Aw')
-              done(err)
-            })
+              .then(user => {
+                expect(user.firstName).toBe('New Aw')
+                done(err)
+              })
           })
       })
     })
