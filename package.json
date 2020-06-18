@@ -1,5 +1,5 @@
 {
-  "name": "basic-boilerplate",
+  "name": "node-api-boilerplate",
   "version": "1.0.0",
   "description": "``` $ sudo pacman -Sy postgresql postgresql-libs postgis $ sudo passwd postgres $ su - postgres -c \"initdb --locale en_US.UTF-8 -D '/var/lib/postgres/data'\" $ systemctl start postgresql $ systemctl enable postgresql ```",
   "main": "index.js",
