@@ -26,7 +26,7 @@ describe('Authentication route', () => {
   })
   describe('POST /login', () => {
     it('should logged in', done => {
-      request.post(`/login`)
+      request.post('/login')
         .send({
           email: 'test.sample@email.com',
           password: 'password'

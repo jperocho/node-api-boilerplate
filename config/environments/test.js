@@ -9,7 +9,7 @@ module.exports = {
     maxFiles: 2,
     colorize: false
   },
-  authSecret: process.env.SECRET,
+  authSecret: process.env.JWT_SECRET,
   authSession: {
     session: false
   }

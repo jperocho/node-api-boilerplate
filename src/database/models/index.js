@@ -11,7 +11,6 @@ const db = {}
 let sequelize
 
 if (config.use_env_variable) {
-  // sequelize = new Sequelize(process.env[config.use_env_variable])
   sequelize = new Sequelize(config.use_env_variable)
 } else {
   sequelize = new Sequelize(config.database, config.username, config.password, config)
@@ -24,7 +23,7 @@ fs
     (file !== basename) &&
     (file.slice(-3) === '.js'))
   .forEach(file => {
-    const model = sequelize['import'](path.join(__dirname, file))
+    const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes)
     db[model.name] = model
   })
 
